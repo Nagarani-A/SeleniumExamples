@@ -1,0 +1,24 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+
+# import time
+
+s = Service("C:\\Users\\nagua\\PycharmProjects\\SeleniumExamples\\drivers\\chromedriver")
+driver = webdriver.Chrome(service=s)
+driver.maximize_window()
+
+driver.get("https://www.bing.com/account/general?ru=https%3a%2f%2fwww.bing.com%2f&FORM=O2HV46&sh=0")
+
+p1 = driver.find_elements(By.TAG_NAME, "option")
+
+print(len(p1))
+
+# to print the values in the dropdown
+for element in range(len(p1)):
+    if p1[element].is_displayed():
+        print(p1[element].text)
+
+# time.sleep(3)
+driver.quit()
